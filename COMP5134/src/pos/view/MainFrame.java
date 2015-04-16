@@ -38,7 +38,7 @@ public class MainFrame extends JFrame{
 	private JButton startButton = new JButton("New IceCream");
 	private JButton sysAdminButton = new JButton("System Administrator");
 	private JLabel printOutLabel = new JLabel();
-	private JLabel totalLabel = new JLabel("   Toal: ");
+	private JLabel totalLabel = new JLabel("   Total: ");
 	private JButton addIceCreamButton;
 	private JButton addDecoratorButton;
 	
@@ -86,10 +86,11 @@ public class MainFrame extends JFrame{
 				setIceCreamButtonEnabled(true);
 				setDecoratorButtonEnabled(false);
 				selectionList = new ArrayList<IceCream>();
-				totalLabel.setText("   Toal: ");
+				totalLabel.setText("   Total: ");
+				if( sysAdminFrame != null){
 				sysAdminFrame.dispose();
+				}
 				refreshResult();
-				
 			}
 		});
 
@@ -182,7 +183,7 @@ public class MainFrame extends JFrame{
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					addItemFrame = new JFrame("New Decorator");
-					addItemFrame.setSize(600,200);
+					addItemFrame.setSize(500,200);
 					//sysAdminFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 					addItemFrame.setVisible(true);
 					JLabel  descriptionLabel = new JLabel("Decorator: ");
@@ -237,7 +238,7 @@ public class MainFrame extends JFrame{
 					selectionList.add(i);
 					setDecoratorButtonEnabled(true);
 					setIceCreamButtonEnabled(false);
-					totalLabel.setText("   Toal: "+PosManager.calTotalPrice(selectionList));
+					totalLabel.setText("   Total: "+PosManager.calTotalPrice(selectionList));
 					refreshResult();
 				}
 			});
@@ -269,7 +270,7 @@ public class MainFrame extends JFrame{
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					selectionList.add(i);
-					totalLabel.setText("   Toal: "+PosManager.calTotalPrice(selectionList));
+					totalLabel.setText("   Total: "+PosManager.calTotalPrice(selectionList));
 					refreshResult();
 				}
 			});
@@ -353,7 +354,7 @@ public void preSet(List<IceCream> icList, List<IceCream> decList){
 		
 		
 		if (returnCode == 1){
-			errorMessage.setText("Please insert Ice-cream name!");
+			errorMessage.setText("Please insert description name!");
 		}
 		if (returnCode == 2){
 			errorMessage.setText("Please insert valid price!");
