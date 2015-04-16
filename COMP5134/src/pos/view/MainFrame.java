@@ -104,13 +104,15 @@ public class MainFrame extends JFrame{
 		c2.fill = 0;
 		c2.anchor = 10;
 		mainFrame.add(sysAdminButton, c2);
-		//sysAdminButton.setActionCommand("sysAdmin");
 		sysAdminButton.addActionListener(new AfterButtonClickListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				addItem();
 				setIceCreamButtonEnabled(false);
 				setDecoratorButtonEnabled(false);
+				selectionList = new ArrayList<IceCream>();
+				totalLabel.setText("   Total: ");
+				refreshResult();
 			}
 		});
 
@@ -340,7 +342,7 @@ public void preSet(List<IceCream> icList, List<IceCream> decList){
 		GridBagConstraints c4 = new GridBagConstraints();
 		c4.gridx = 0;
 		c4.gridy = checkList;
-		c4.gridwidth = 0;
+		c4.gridwidth = 10;
 		c4.gridheight = 0;
 		c4.weightx = 0.0;
 		c4.weighty = 0.0;
